@@ -1,0 +1,154 @@
+<!-- Main component is the main component where we are linking all basic components of this project  -->
+<!-- 
+There are two main components 
+1. Card component
+2. Tag component -->
+
+
+<div class="main">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="cont container">
+
+
+      <ul class="pe-2 pt-3 ps-3 d-flex justify-content-between col-lg-10">
+        <li class="d-flex me-4" (click)="onClickCategory('All Events')">
+          <img class="imgSrc" src= "../../../assets/images/allEventsInactive.svg" alt="all-events-logo" />
+          <span [ngClass]="(curr_category=='All Events')?'active':'inactive'">All Events</span>
+        </li>
+
+
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('Webinars')">
+          <img class="imgSrc" src="../../../assets/images/webinarInactive.svg" alt="webinar-logo" />
+          <span [ngClass]="(curr_category=='Webinars')?'active':'inactive'" >Webinars</span>
+        </li>
+
+
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('Coding Events')">
+          <img class="imgSrc" src="../../../assets/images/codingEventsInactive.svg" alt="coding-events-logo" />
+          <span [ngClass]="(curr_category=='Coding Events')?'active':'inactive'">Coding Events</span>
+        </li>
+
+
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('BootCamp Events')">
+          <img class="imgSrc" src="../../../assets/images/bootcampEventsInactive.png" alt="bootcamp-logo" />
+          <span [ngClass]="(curr_category=='BootCamp Events')?'active':'inactive'">Bootcamp Events</span>
+        </li>
+
+
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('Workshops')">
+          <img class="imgSrc" src="../../../assets/images/workshopInactive.png" alt="workshop-logo" />
+          <span [ngClass]="(curr_category=='Workshops')?'active':'inactive'">Workshops</span>
+        </li>
+      </ul>
+
+
+    </div>
+  </nav>
+
+  <mat-divider></mat-divider>
+
+
+  <!-- Second Navbar Begins  -->
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="cont container">
+      <ul class="pe-2 pt-1 ps-3 pb-0 d-flex">
+
+
+        <li class="nav-item subcategory">
+          <span (click)="changeSubCategory()" (click)="onClickSubCategory('Upcoming')"  [ngClass]="(curr_subcategory=='Upcoming')?'active':'inactive'">Upcoming</span>
+        </li>
+        
+
+        <li class="nav-item subcategory">
+          <div *ngIf="curr_category=='Webinars'; else elseBlock">
+            <span (click)="changeSubCategory()" (click)="onClickSubCategory('Recorded')"  [ngClass]="(curr_subcategory=='Recorded')?'active':'inactive'">Recorded</span>
+          </div>
+          <ng-template #elseBlock>
+            <span (click)="changeSubCategory()" (click)="onClickSubCategory('Archived')"  [ngClass]="(curr_subcategory=='Archived')?'active':'inactive'">Archived</span>
+          </ng-template>
+        </li>
+
+
+        <li class="nav-item subcategory">
+          <div>
+            <span [ngStyle]="{ 'display': (curr_category=='Coding Events')?'none':'block' }"
+              (click)="changeSubCategory()" (click)="onClickSubCategory('All Time Favourites')"   [ngClass]= "(curr_subcategory=='All Time Favourites')?'active':'inactive'">All Time
+              Favourites</span>
+          </div>
+        </li>
+
+
+      </ul>
+    </div>
+  </nav>
+
+  <mat-divider></mat-divider>
+
+
+  <!-- Showing Event Data fetched by event API  -->
+
+
+  <!-- <div class="row p-2 pt-4">
+    <div class="col-lg-9 d-flex flex-wrap justify-content-start">
+      <div *ngFor="let event of events" class="d-flex justify-content-center">
+        <app-card class="" eventName="{{ event['name'] }}" imgSrc="{{ event['cover_picture'] }}" value1="Starts On"
+          value2="{{
+            event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'
+          }}" value3="Entry Fee" value4="{{ event['fees'] === 0 ? 'Free' : event['fees'] }}" value5="Venue"
+          value6="{{ event['venue'] }}" eventDescription="{{ event['short_desc'] }}" buttonValue="Register Now"
+          registerLink="{{
+            'https://www.codingninjas.com/events/' + event['slug']
+          }}" regEndTime="{{
+            event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'
+          }}" regStatus="{{event['registration_status']}}" [tagList]="event['card_tags']"
+          [topUsers]="event['registered_users']['top_users']"
+          otherUsers="{{event['registered_users']['other_users_count']}}"
+          showUsers="{{event['registered_users']['show_users_count']}}"></app-card>
+      </div>
+    </div>
+
+    <div class="col-lg-3 d-flex justify-content-start">
+      <app-tags (tagChange)="changeTag($event)"></app-tags>
+    </div>
+  </div> -->
+
+ 
+  
+ <!-- Page structure designing  -->
+
+
+
+  <div class="row">
+    <div class="col-lg-9 d-flex flex-row-reverse align-items-center">
+      <div>
+        <button class="btn btn-md ms-1 text-light">
+          &gt;
+        </button>
+      </div>
+      <div>
+        <button disabled="true" class="btn btn-md ms-1 text-light">
+          &gt;
+        </button>
+      </div>
+      <span> Page <input class="text-center" value="" style="width: 40px;" type="number" min="1" max="totPages"
+          id="pageVal" name="pageVal">
+        of </span>
+
+      <div>
+        <button class="btn btn-md me-1 text-light">
+          &lt;
+        </button>
+      </div>
+      <div>
+        <button disabled="true" class="btn btn-md me-1 text-light">
+          &lt;
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height: 2px;"></div>
+
+<!-- <p>It works</p> -->

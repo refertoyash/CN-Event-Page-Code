@@ -1,0 +1,35 @@
+/* Adding main component css  */
+
+.headLine{
+  margin: 6rem;
+  font-weight: 500;
+  color:white;
+  font-size: 1.2rem;
+  letter-spacing: 0.078rem;
+  font-family: "Roboto", 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.headline1{
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 769px) {
+  .headLine{
+      margin: 4rem;
+      margin-left:1.5rem;
+  }
+  
+}
+
+@media screen and (max-width: 400px) {
+  .headLine{
+      margin: 3rem;
+      margin-left: 1rem;
+      font-size: 0.6rem;
+  }
+  .headline1{
+      font-size: 1.1rem;
+  }
+  
+}
