@@ -11,31 +11,36 @@ There are two main components
 
       <ul class="pe-2 pt-3 ps-3 d-flex justify-content-between col-lg-10">
         <li class="d-flex me-4" (click)="onClickCategory('ALL_EVENTS')">
-          <img class="imgSrc" src="../../../assets/images/allEventsInactive.svg" alt="all-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='ALL_EVENTS')?'':'none'}" src="../../../assets/images/allEventsInactive.svg" alt="all-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='ALL_EVENTS')?'':'none'}" src="../../../assets/images/allEventsActive.svg" alt="all-events-logo" />
           <span [ngClass]="(curr_category=='ALL_EVENTS')?'active':'inactive'">All Events</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('WEBINAR')">
-          <img class="imgSrc" src="../../../assets/images/webinarInactive.svg" alt="webinar-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='WEBINAR')?'':'none'}"  src="../../../assets/images/webinarInactive.svg" alt="webinar-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='WEBINAR')?'':'none'}"  src="../../../assets/images/webinarsActive.svg" alt="webinar-logo" />
           <span [ngClass]="(curr_category=='WEBINAR')?'active':'inactive'">Webinars</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('CODING_EVENT')">
-          <img class="imgSrc" src="../../../assets/images/codingEventsInactive.svg" alt="coding-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='CODING_EVENT')?'':'none'}" src="../../../assets/images/codingEventsInactive.svg" alt="coding-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='CODING_EVENT')?'':'none'}" src="../../../assets/images/codingEventsActive.svg" alt="coding-events-logo" />
           <span [ngClass]="(curr_category=='CODING_EVENT')?'active':'inactive'">Coding Events</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('BOOTCAMP_EVENT')">
-          <img class="imgSrc" src="../../../assets/images/bootcampEventsInactive.png" alt="bootcamp-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='BOOTCAMP_EVENT')?'':'none'}"  src="../../../assets/images/bootcampEventsInactive.png" alt="bootcamp-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='BOOTCAMP_EVENT')?'':'none'}"  src="../../../assets/images/BootcampEventsActive.png" alt="bootcamp-logo" />
           <span [ngClass]="(curr_category=='BOOTCAMP_EVENT')?'active':'inactive'">Bootcamp Events</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('WORKSHOP')">
-          <img class="imgSrc" src="../../../assets/images/workshopInactive.png" alt="workshop-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='WORKSHOP')?'':'none'}" src="../../../assets/images/workshopInactive.png" alt="workshop-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='WORKSHOP')?'':'none'}" src="../../../assets/images/workshopActive.png" alt="workshop-logo" />
           <span [ngClass]="(curr_category=='WORKSHOP')?'active':'inactive'">Workshops</span>
         </li>
       </ul>
@@ -63,8 +68,8 @@ There are two main components
 
         <li class="nav-item subcategory">
           <div *ngIf="curr_category=='WEBINAR'; else elseBlock">
-            <span (click)="onClickSubCategory('Recorded')"
-              [ngClass]="(curr_subcategory=='Recorded')?'active':'inactive'">Recorded</span>
+            <span (click)="onClickSubCategory('Archived')"
+              [ngClass]="(curr_subcategory=='Archived')?'active':'inactive'">Recorded</span>
           </div>
           <ng-template #elseBlock>
             <span (click)="onClickSubCategory('Archived')"
@@ -106,46 +111,59 @@ There are two main components
             'https://www.codingninjas.com/events/' + event['slug']
           }}" regEndTime="{{
             event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'
-          }}" regStatus="{{event['registration_status']}}" [tagList] = "event['card_tags']"
-          [topUsers] = "event['registered_users']['top_users']"
-          otherUsers = "{{event['registered_users']['other_users_count']}}"
-          showUsers = "{{event['registered_users']['show_users_count']}}"
-          
-          ></app-card>
+          }}" regStatus="{{event['registration_status']}}" [tagList]="event['card_tags']"
+          [topUsers]="event['registered_users']['top_users']"
+          otherUsers="{{event['registered_users']['other_users_count']}}"
+          showUsers="{{event['registered_users']['show_users_count']}}"></app-card>
       </div>
     </div>
 
-    <div class="col-lg-3 d-flex justify-content-start">
-      <app-tags (tagChange)="changeTag($event)"></app-tags>
+<!-- Tag property management  -->
+    
+    
+  <div class="col-lg-3 d-flex justify-content-start ">
+      <app-tags *ngIf="toDisplay" class="tags" (tagChange)="changeTag($event)"></app-tags>
     </div>
   </div>
+  
+<!-- Paging Management  -->
+  
 
-  <div class="row">
-    <div class="col-lg-9 d-flex flex-row-reverse align-items-center">
+  <div class="row box">
+
+    <div class="col-lg-9 d-flex flex-row-reverse align-items-center justify-content-center ">
+    
       <div *ngIf="curPage != totPages">
-        <button class="btn btn-md ms-1 text-light" style="background-color: 'gray' " (click)="nextPage()">
-          &gt;
-        </button>
+        <button class="btn btn-md ms-1 text-light" style="background-color: '#fa7328' " (click)="nextPage()">&gt;</button>
       </div>
+      
       <div *ngIf="curPage == totPages">
-        <button disabled="true" class="btn btn-md ms-1 text-light" style="background-color:'gray' " (click)="nextPage()">
-          &gt;
-        </button>
+        <button disabled="true" class="btn btn-md ms-1 text-light" style="background-color:'#fa7328' "(click)="nextPage()">&gt;</button>
       </div>
+      
       <span> Page <input class="text-center" value="" style="width: 40px;" type="number" min="1" max="{{totPages}}" id="pageVal" name="pageVal" placeholder="{{ curPage }}" (change)="functionPage()">
-        of {{ totPages }}</span>
-
+        of {{ totPages }}
+      </span>
+      
       <div *ngIf="curPage != 1">
-        <button class="btn btn-md me-1 text-light" style="background-color: 'gray' " (click)="prevPage()">
+        <button class="btn btn-md me-1 text-light" style="background-color: '#fa7328' " (click)="prevPage()">
           &lt;
         </button>
       </div>
+      
       <div *ngIf="curPage == 1">
-        <button disabled="true" class="btn btn-md me-1 text-light" style="background-color: 'gray' " (click)="prevPage()">
-          &lt;
-        </button>
+        <button disabled="true" class="btn btn-md me-1 text-light" style="background-color: '#fa7328' "(click)="prevPage()">&lt;</button>
       </div>
+      
     </div>
+    
   </div>
 </div>
-<div style="height: 2px;"></div>
+
+
+<div class="box">
+  <button class="filter" style="display: none;" (click)="ToggleTags()">Filter Events</button>
+</div>
+
+
+<!-- <div style="height: 5px;"></div> -->

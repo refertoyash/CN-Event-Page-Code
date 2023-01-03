@@ -9,11 +9,15 @@ import { FilterDetailsService } from 'src/app/services/filter-details.service';
 })
 export class MainComponent {
   // Changing fetching details on clicking any category
-  mainColor =  'gray'
+  mainColor = 'gray';
   apiurl: string = '';
   temp: any;
   temp1: any;
   new_events: any;
+
+
+  public screenWidth: any;  
+  toDisplay = true;
 
   ///////////////////// CARD CALLER //////////////////////////
   private apiUrl = 'https://api.codingninjas.com/api/v3/events';
@@ -42,7 +46,7 @@ export class MainComponent {
   callApi() {
     var api = this.event.makeAPI();
     console.log(api);
-    console.log("good");
+    console.log('good');
     this.http.get(api).subscribe((data: any) => {
       this.eventsObj = data.data.events;
       this.events = JSON.parse(JSON.stringify(this.eventsObj));
@@ -51,7 +55,7 @@ export class MainComponent {
       this.curPage = this.offset / 20 + 1;
     });
   }
-
+  
   ngOnInit() {
     this.callApi();
     this.curr_category = this.event.event_detail.category;
@@ -60,6 +64,10 @@ export class MainComponent {
     this.apiurl = this.event.makeAPI();
     this.event.fill();
     // console.log(this.apiurl);
+    this.screenWidth = window.innerWidth;  
+    if(this.screenWidth<=980) this.toDisplay = false;
+    console.log(this.toDisplay);
+    console.log(this.screenWidth);
   }
 
   onClickCategory(category: string) {
@@ -111,11 +119,13 @@ export class MainComponent {
 
   prevPage() {
     this.offset -= 20;
+    this.event.event_detail.offset-=20;
     this.callApi();
   }
 
   nextPage() {
     this.offset += 20;
+    this.event.event_detail.offset+=20;
     this.callApi();
     document.documentElement.scrollTop = 0;
   }
@@ -129,5 +139,11 @@ export class MainComponent {
       this.callApi();
       document.documentElement.scrollTop = 0;
     }
+  }
+
+
+  ToggleTags(){
+      if(this.toDisplay==true) this.toDisplay = false;
+      else this.toDisplay = true 
   }
 }

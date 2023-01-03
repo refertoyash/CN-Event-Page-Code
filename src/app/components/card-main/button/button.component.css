@@ -1,13 +1,19 @@
-.btn{
-  background: linear-gradient(90deg,#fa7328,#ee9f15);
-      border-radius: 3px;
-      color: #fff;
-      width: 132px;
-      height: 32px;
-      border: none;
-      font-size: 0.8rem;
-      line-height: 18px;
-      text-align: center;
-      cursor: pointer;
-      text-transform: uppercase;
+.btn {
+  background: linear-gradient(90deg, #fa7328, #ee9f15);
+  border-radius: 3px;
+  color: #fff;
+  width: 132px;
+  height: 32px;
+  border: none;
+  font-size: 0.8rem;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+
 }

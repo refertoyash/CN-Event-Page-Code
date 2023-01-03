@@ -2,7 +2,9 @@
   font-family: Mulish,Helvetica,Arial,sans-serif;
 }
 .card{
-  min-height: 480px;
+  height: 500px;
+  /* max-width: 100px; */
+  width: 373px;
   background: #fff;
   border-radius: 5px;
   margin-right: 25px;
@@ -15,7 +17,6 @@
 
 @media screen and (min-width: 769px) {
   .card{
-      
       max-width: 36.659vw;
   }
   
@@ -41,6 +42,11 @@
   }
 }
 
+@media screen  and (max-width:380px){
+  .card{
+    width: 88vw;
+  }
+}
 .text-1{
   color: rgb(125,125,134);
   font-size: .9rem;

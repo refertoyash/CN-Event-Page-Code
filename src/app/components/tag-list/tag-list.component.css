@@ -1,20 +1,8 @@
-.tag {
-  cursor: pointer;
-  display: inline-block;
-  user-select: none;
-}
-
-.cursor {
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 .tagName {
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 14px;
-  background-color: grey;
+  background-color: red;
   color: #424242;
   font-size: 14px;
   padding: 12px;
@@ -34,5 +22,6 @@
 
 .tag{
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  user-select: none;
 }
