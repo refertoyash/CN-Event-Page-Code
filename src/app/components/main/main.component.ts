@@ -14,12 +14,14 @@ export class MainComponent {
   // Changing fetching details on clicking any category 
   curr_category = ""
   curr_subcategory = ""
-
+  apiurl :string = ""
   onClickCategory(category: string){
     this.event.event_detail.category = category;
     this.event.event_detail.subcategory = "Upcoming";
     this.curr_category =   this.event.event_detail.category 
     this.curr_subcategory =   this.event.event_detail.subcategory
+    this.apiurl = this.event.makeAPI();
+    console.log(this.apiurl);
     console.log(this.event.event_detail);
   }
 
@@ -28,17 +30,21 @@ export class MainComponent {
   onClickSubCategory(subcategory: string){
     this.event.event_detail.subcategory = subcategory;
     this.curr_subcategory =   this.event.event_detail.subcategory
+    this.apiurl = this.event.makeAPI();
+    console.log(this.apiurl);
     console.log(this.event.event_detail);
   }
   
   ngOnInit(){
     this.curr_category = this.event.event_detail.category;
     this.curr_subcategory = this.event.event_detail.subcategory;
+    this.apiurl = this.event.makeAPI();
+    console.log(this.apiurl);
   }
   
 
   getImg(curr_url: string):string{
-    if(this.curr_category=='All Events') return ("../../../assets/images/allEventsActive.svg");
+    if(this.curr_category=='') return ("../../../assets/images/allEventsActive.svg");
     return curr_url;
   }
 

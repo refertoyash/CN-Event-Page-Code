@@ -1,0 +1,71 @@
+*{
+  font-family: Mulish,Helvetica,Arial,sans-serif;
+}
+.card{
+  min-height: 480px;
+  background: #fff;
+  border-radius: 5px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 1px 30px 0 rgb(0 0 0 / 15%);
+  cursor: pointer;
+  font-weight: 400;
+  transition: all .3s;
+}
+
+@media screen and (min-width: 769px) {
+  .card{
+      
+      max-width: 36.659vw;
+  }
+  
+}
+@media screen and (min-width: 1025px) {
+  .card{
+      
+      max-width: 29.725vw;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  .card{
+      max-width: 93vw;
+  }
+  
+}
+
+@media screen and (max-width: 426px) {
+  .card{
+      max-width: 100vw;
+  }
+}
+
+.text-1{
+  color: rgb(125,125,134);
+  font-size: .9rem;
+}
+.text-2{
+  font-size: .8rem;
+  background-color: white;
+  color: black;
+}
+.h-50{
+   height: 50vh;
+}
+.text-3{
+   font-size: 2rem;
+   font-weight: 500;
+}
+
+
+
+.fs-4{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.fs-5{
+    font-size: .7rem;
+    font-weight: 600;
+
+}

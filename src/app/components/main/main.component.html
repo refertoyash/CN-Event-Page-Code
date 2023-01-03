@@ -8,36 +8,35 @@ There are two main components
 <div class="main">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="cont container">
-
-
+   
       <ul class="pe-2 pt-3 ps-3 d-flex justify-content-between col-lg-10">
-        <li class="d-flex me-4" (click)="onClickCategory('All Events')">
+        <li class="d-flex me-4" (click)="onClickCategory('ALL_EVENTS')">
           <img class="imgSrc" src= "../../../assets/images/allEventsInactive.svg" alt="all-events-logo" />
-          <span [ngClass]="(curr_category=='All Events')?'active':'inactive'">All Events</span>
+          <span [ngClass]="(curr_category=='ALL_EVENTS')?'active':'inactive'">All Events</span>
         </li>
 
 
-        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('Webinars')">
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('WEBINAR')">
           <img class="imgSrc" src="../../../assets/images/webinarInactive.svg" alt="webinar-logo" />
-          <span [ngClass]="(curr_category=='Webinars')?'active':'inactive'" >Webinars</span>
+          <span [ngClass]="(curr_category=='WEBINAR')?'active':'inactive'" >Webinars</span>
         </li>
 
 
-        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('Coding Events')">
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('CODING_EVENT')">
           <img class="imgSrc" src="../../../assets/images/codingEventsInactive.svg" alt="coding-events-logo" />
-          <span [ngClass]="(curr_category=='Coding Events')?'active':'inactive'">Coding Events</span>
+          <span [ngClass]="(curr_category=='CODING_EVENT')?'active':'inactive'">Coding Events</span>
         </li>
 
 
-        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('BootCamp Events')">
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('BOOTCAMP_EVENT')">
           <img class="imgSrc" src="../../../assets/images/bootcampEventsInactive.png" alt="bootcamp-logo" />
-          <span [ngClass]="(curr_category=='BootCamp Events')?'active':'inactive'">Bootcamp Events</span>
+          <span [ngClass]="(curr_category=='BOOTCAMP_EVENT')?'active':'inactive'">Bootcamp Events</span>
         </li>
 
 
-        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('Workshops')">
+        <li class="d-flex me-4" (click)="changeCategory()" (click)="onClickCategory('WORKSHOP')">
           <img class="imgSrc" src="../../../assets/images/workshopInactive.png" alt="workshop-logo" />
-          <span [ngClass]="(curr_category=='Workshops')?'active':'inactive'">Workshops</span>
+          <span [ngClass]="(curr_category=='WORKSHOP')?'active':'inactive'">Workshops</span>
         </li>
       </ul>
 
@@ -74,7 +73,7 @@ There are two main components
         <li class="nav-item subcategory">
           <div>
             <span [ngStyle]="{ 'display': (curr_category=='Coding Events')?'none':'block' }"
-              (click)="changeSubCategory()" (click)="onClickSubCategory('All Time Favourites')"   [ngClass]= "(curr_subcategory=='All Time Favourites')?'active':'inactive'">All Time
+              (click)="changeSubCategory()" (click)="onClickSubCategory('ALL_TIME_FAVORITES')"   [ngClass]= "(curr_subcategory=='ALL_TIME_FAVORITES')?'active':'inactive'">All Time
               Favourites</span>
           </div>
         </li>
@@ -90,35 +89,24 @@ There are two main components
   <!-- Showing Event Data fetched by event API  -->
 
 
-  <!-- <div class="row p-2 pt-4">
-    <div class="col-lg-9 d-flex flex-wrap justify-content-start">
-      <div *ngFor="let event of events" class="d-flex justify-content-center">
-        <app-card class="" eventName="{{ event['name'] }}" imgSrc="{{ event['cover_picture'] }}" value1="Starts On"
-          value2="{{
-            event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'
-          }}" value3="Entry Fee" value4="{{ event['fees'] === 0 ? 'Free' : event['fees'] }}" value5="Venue"
-          value6="{{ event['venue'] }}" eventDescription="{{ event['short_desc'] }}" buttonValue="Register Now"
-          registerLink="{{
-            'https://www.codingninjas.com/events/' + event['slug']
-          }}" regEndTime="{{
-            event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'
-          }}" regStatus="{{event['registration_status']}}" [tagList]="event['card_tags']"
-          [topUsers]="event['registered_users']['top_users']"
-          otherUsers="{{event['registered_users']['other_users_count']}}"
-          showUsers="{{event['registered_users']['show_users_count']}}"></app-card>
-      </div>
-    </div>
+  <div class="row p-2 pt-4">
 
-    <div class="col-lg-3 d-flex justify-content-start">
-      <app-tags (tagChange)="changeTag($event)"></app-tags>
+  <div class="col-lg-9 d-flex flex-wrap justify-content-start">
+    <div class="d-flex justify-content-center">
+      <app-card class=""></app-card>
     </div>
-  </div> -->
+  </div>
+
+    <!-- Showing tag getting fetched by API  -->
+    
+    <div class="col-lg-3 d-flex justify-content-start">
+      <app-tags></app-tags>
+    </div>
+  </div> 
 
  
   
  <!-- Page structure designing  -->
-
-
 
   <div class="row">
     <div class="col-lg-9 d-flex flex-row-reverse align-items-center">
