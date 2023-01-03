@@ -62,7 +62,7 @@ There are two main components
 
 
         <li class="nav-item subcategory">
-          <div *ngIf="curr_category=='Webinars'; else elseBlock">
+          <div *ngIf="curr_category=='WEBINAR'; else elseBlock">
             <span (click)="onClickSubCategory('Recorded')"
               [ngClass]="(curr_subcategory=='Recorded')?'active':'inactive'">Recorded</span>
           </div>
@@ -75,9 +75,9 @@ There are two main components
 
         <li class="nav-item subcategory">
           <div>
-            <span [ngStyle]="{ 'display': (curr_category=='Coding Events')?'none':'block' }"
-              (click)="onClickSubCategory('ALL_TIME_FAVORITES')"
-              [ngClass]="(curr_subcategory=='ALL_TIME_FAVORITES')?'active':'inactive'">All Time
+            <span [ngStyle]="{ 'display': (curr_category=='CODING_EVENT')?'none':'block' }"
+              (click)="onClickSubCategory('All Time Favorites')"
+              [ngClass]="(curr_subcategory=='All Time Favorites')?'active':'inactive'">All Time
               Favourites</span>
           </div>
         </li>
