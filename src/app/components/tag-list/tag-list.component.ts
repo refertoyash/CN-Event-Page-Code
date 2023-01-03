@@ -12,7 +12,7 @@ export class TagListComponent {
   @Input() index!: number;
   @Input() tag_status!: boolean[]; //List of selected tags
   @Input() alltags!: string[];
-
+  
   temp_status: boolean | undefined;
   constructor(
     private event: FilterDetailsService,

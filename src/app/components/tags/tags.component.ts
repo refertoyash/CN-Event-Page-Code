@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { GetTagApiDataService } from 'src/app/services/get-tag-api-data.service';
 
 @Component({
@@ -10,13 +10,30 @@ import { GetTagApiDataService } from 'src/app/services/get-tag-api-data.service'
 
 export class TagsComponent {
 
-  tempdata: any;  //temporary variable to store API response 
-  alltags= [];   //List of all tags
-  curr_tags = []; //List of top 10 tags
-  tag_status: boolean[] = [];  //List of selected tags
+  tempdata: any; //temporary variable to store API response
+  alltags = []; //List of all tags
+  curr_tags = []; //List of curr active tags
+  tag_status: boolean[] = []; //List of selected tags
   flag = false;
+  temp_tags: any;
 
-  constructor(private selectedtags: GetTagApiDataService) {
+  inclTags: Array<string> = [];
+
+  @Output() tagChange = new EventEmitter<string>();
+
+  constructor(private selectedtags: GetTagApiDataService) {}
+
+  ShowMore() {
+    this.curr_tags = this.alltags;
+    this.flag = true;
+  }
+
+  ShowLess() {
+    this.curr_tags = this.temp_tags;
+    this.flag = false;
+  }
+
+  ngOnInit() {
     this.selectedtags.getData().subscribe((response) => {
       this.tempdata = response;
       this.alltags = this.tempdata.data.tags;
@@ -26,17 +43,21 @@ export class TagsComponent {
         this.curr_tags.push(this.alltags[i]);
         this.tag_status.push(false);
       }
+      this.temp_tags = this.curr_tags;
     });
   }
 
 
-  ShowMore() {
-    this.curr_tags = this.alltags;
-    this.flag = true;
+  tagClicked(tag: string){
+    console.log(tag);
+    const ind = this.inclTags.indexOf(tag);
+    if(ind>-1){
+      this.inclTags.splice(ind, 1);
+    }else{
+      this.inclTags.push(tag);
+    }
+    this.tagChange.emit(tag);
   }
 
-
   
-
-
 }

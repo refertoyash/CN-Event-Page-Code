@@ -1,0 +1,21 @@
+.registered-para{
+  margin: 0;
+  color: #757575;
+  font-size: 13px;
+}
+
+img{
+  position: relative;
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  margin: .135rem;
+  
+}
+img[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 0;
+  left: 0;
+}

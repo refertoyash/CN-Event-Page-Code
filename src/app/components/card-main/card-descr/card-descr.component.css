@@ -1,0 +1,13 @@
+.text-1{
+  color: rgb(125,125,134);
+  font-size: .9rem;
+}
+
+@media screen and (min-width:710px) {
+  .fixedLine {
+      line-height: 1.5em;
+      height: 4.5em;       /* height is 2x line-height, so two lines will display */
+      overflow: hidden;  /* prevents extra lines from being visible */
+  }
+  
+}

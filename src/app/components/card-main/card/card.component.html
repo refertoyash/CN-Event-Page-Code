@@ -1,3 +1,42 @@
-<div>
-    <p>data.name</p>
+<div class="card d-flex justify-content-between m-2 sm:w-50 xs:w-100">
+  <div>
+    <app-card-banner imgSrc={{imgSrc}} regEndTime={{regEndTime}} regStatus={{regStatus}}></app-card-banner>
+    <div class="d-flex flex-column justify-content-between  p-2 h6  ">
+
+      <h5 class=" h6 fs-5">{{eventName}}</h5>
+      <div class="d-flex flex-column justify-content-between ">
+        <div class="d-flex justify-content-between">
+          <app-card-details value1={{value1}} value2={{value2}}></app-card-details>
+          <app-card-details value1={{value3}} value2={{value4}}></app-card-details>
+          <app-card-details value1={{value5}} value2={{value6}}></app-card-details>
+
+        </div>
+
+        <app-card-descr description={{eventDescription}}></app-card-descr>
+      </div>
+      <div class="d-flex justify-content-start">
+        <span class="p-1 mx-1" style="background-color: #eee; font-size: 0.8rem;"
+          *ngFor="let tag of tags;let i =index;">
+          <span>{{tag}}</span>
+        </span>
+        <span *ngIf="otherTag!=0" style="color: #FA7328;">+{{otherTag}} more</span>
+      </div>
+    </div>
+
+  </div>
+  <!-- <app-users name={{topUsers[0][name]}} imgSrc="{{topUsers['image_url']}}" otherUsers={{otherUsers}} showUsers={{showUsers}}></app-users> -->
+  <div *ngIf="showUsers=='true'" class="d-flex justify-content-between align-items-center p-1 border-top">
+    <div>
+      <app-registered *ngFor="let user of topUsers" imgSrc="{{user['image_url']}}" name="{{user['name']}}"
+        otherUsers={{otherUsers}} regStatus={{regStatus}}></app-registered>
+      <div class="d-flex">
+        <p class="registered-para">and <strong>{{otherUsers}}</strong> others
+          <span *ngIf="regStatus=='PAST'"> participated.</span>
+          <span *ngIf="regStatus!='PAST'">are participating.</span>
+        </p>
+      </div>
+    </div>
+
+    <app-button *ngIf="regStatus!='PAST'" value={{buttonValue}} link={{registerLink}}></app-button>
+  </div>
 </div>

@@ -10,9 +10,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TagsComponent } from './components/tags/tags.component';
 import { TagListComponent } from './components/tag-list/tag-list.component';
 import { CardComponent } from './components/card-main/card/card.component';
+import { ButtonComponent } from './components/card-main/button/button.component';
+import { CardBannerComponent } from './components/card-main/card-banner/card-banner.component';
+import { CardDetailsComponent } from './components/card-main/card-details/card-details.component';
+import { CardDescrComponent } from './components/card-main/card-descr/card-descr.component';
+import { UsersComponent } from './components/card-main/users/users.component';
+import { RegisteredComponent } from './components/card-main/registered/registered.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, TagsComponent, TagListComponent, CardComponent],
+  declarations: [AppComponent, MainComponent, TagsComponent, TagListComponent, CardComponent, ButtonComponent, CardBannerComponent, CardDetailsComponent, CardDescrComponent, UsersComponent, RegisteredComponent],
   imports: [BrowserModule, AppRoutingModule, MatDividerModule, BrowserAnimationsModule, FontAwesomeModule,  HttpClientModule,],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,39 @@
+.banner-container{
+  position: relative;
+  z-index: 1;
+}
+.card-img{
+  width: 100%;
+  height: 180px;
+}
+.register-badge{
+        
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1000;
+  color: #FFFFFF;
+  
+}
+.text-1{
+  color: rgb(125,125,134);
+  font-size: .9rem;
+}
+.text-2{
+  font-size: .7rem;
+  background-color: white;
+  color: black;
+}
+/*blinking dot*/
+circle{
+  filter: blur(1px);
+}
+
+.blinking {
+-webkit-animation: 1s blink ease infinite;
+-moz-animation: 1s blink ease infinite;
+-ms-animation: 1s blink ease infinite;
+-o-animation: 1s blink ease infinite;
+animation: 1s blink ease infinite;
+
+}

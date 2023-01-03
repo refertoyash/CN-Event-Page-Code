@@ -37,7 +37,25 @@ export class FilterDetailsService {
     return api;
   }
 
-  CallAPI(url:string){
-    return this.http.get(url);
+
+  apiurl: string = '';
+  temp: any;
+  temp1: any;
+  events: any;
+   
+  show(){
+    console.log('bhr');
+    this.events = this.temp1;
+    return this.events;
+  }
+  
+  fill(){
+    return this.http.get(this.makeAPI()).subscribe((response) => {
+      this.temp = response;
+      this.temp1 = this.temp.data.events;
+      console.log('data ye laya');
+      console.log(this.temp1);
+      this.show();
+    });
   }
 }

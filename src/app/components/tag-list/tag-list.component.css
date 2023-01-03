@@ -31,3 +31,8 @@
   color: #fff;
   background: #fa7328;
 }
+
+.tag{
+  cursor: pointer;
+  display: inline-block;
+}
