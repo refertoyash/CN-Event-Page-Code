@@ -14,11 +14,15 @@
 
         <app-card-descr description={{eventDescription}}></app-card-descr>
       </div>
+
+
       <div class="d-flex justify-content-start">
+
         <span class="p-1 mx-1" style="background-color: #eee; font-size: 0.8rem;"
           *ngFor="let tag of tags;let i =index;">
-          <span>{{tag}}</span>
+          <span class="extra-tags">{{tag}}</span>
         </span>
+
         <span *ngIf="otherTag!=0" style="color: #FA7328;">+{{otherTag}} more</span>
       </div>
     </div>

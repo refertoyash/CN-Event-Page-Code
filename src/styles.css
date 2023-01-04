@@ -3,6 +3,8 @@
 
 html, body {
   height: 100vh;
+  overflow-x: hidden;
+
 }
 
 body {
@@ -12,5 +14,9 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+body::-webkit-scrollbar{
+  display: none;
 }
 

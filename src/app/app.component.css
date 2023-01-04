@@ -20,6 +20,7 @@
 .box{
   height: 500px;
   position:relative;
+  width: 152%;
   top:-90px;
   background: url(../assets/images/circuit-1-9465.svg) no-repeat center top; 
   -webkit-background-size: cover;
