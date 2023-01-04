@@ -129,8 +129,8 @@ export class MainComponent {
   nextPage() {
     this.offset += 20;
     this.event.event_detail.offset += 20;
-    // document.documentElement.scrollTop = 0;
-    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0;
+    // window.scrollTo(0, 0)
     console.log("I'm Clicked for next")
     this.callApi();
   }
