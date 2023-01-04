@@ -13,5 +13,6 @@ export class CardBannerComponent {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.regEndTime);
   }
 }

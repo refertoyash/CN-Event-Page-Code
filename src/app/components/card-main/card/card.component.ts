@@ -24,6 +24,7 @@ export class CardComponent {
   ngOnInit(): void {
 
     console.log(this.all_data);
+    console.log(this.regEndTime);
     
     this.cost = this.all_data.fees;
     if (this.cost == 0) {

@@ -1,4 +1,4 @@
-.box{
+.box {
   height: 619px;
   display: flex;
   justify-content: center;
@@ -6,7 +6,7 @@
   width: 537%;
 }
 
-h1{
+h1 {
   font-size: 60px;
   position: relative;
   left: -800px;

@@ -6,10 +6,7 @@ import { GetTagApiDataService } from 'src/app/services/get-tag-api-data.service'
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.css'],
 })
-
-
 export class TagsComponent {
-
   tempdata: any; //temporary variable to store API response
   alltags = []; //List of all tags
   curr_tags = []; //List of curr active tags
@@ -47,17 +44,14 @@ export class TagsComponent {
     });
   }
 
-
-  tagClicked(tag: string){
+  tagClicked(tag: string) {
     console.log(tag);
     const ind = this.inclTags.indexOf(tag);
-    if(ind>-1){
+    if (ind > -1) {
       this.inclTags.splice(ind, 1);
-    }else{
+    } else {
       this.inclTags.push(tag);
     }
     this.tagChange.emit(tag);
   }
-
-  
 }

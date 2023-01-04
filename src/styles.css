@@ -4,7 +4,6 @@
 html, body {
   height: 100vh;
   overflow-x: hidden;
-
 }
 
 body {
@@ -16,7 +15,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
-
