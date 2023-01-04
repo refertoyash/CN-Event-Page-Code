@@ -79,10 +79,11 @@ span {
   justify-content: center;
   align-items: center;
   width: 100%;
+  
 }
 
 .filter{
-      margin: 40px;
+      z-index: 9999999999999999999999;
       margin-bottom: 0px;
       background: linear-gradient(90deg,#fa7328,#ee9f15);
       border-radius: 3px;
@@ -95,6 +96,8 @@ span {
       text-align: center;
       cursor: pointer;
       text-transform: uppercase;
+      position: fixed;
+      bottom: 0px;
 }
 
 @media screen and (max-width:980px){
