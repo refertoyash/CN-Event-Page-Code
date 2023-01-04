@@ -9,26 +9,27 @@ import { FilterDetailsService } from 'src/app/services/filter-details.service';
 })
 export class MainComponent {
   // Changing fetching details on clicking any category
-  mainColor = 'gray';
   apiurl: string = '';
   temp: any;
   temp1: any;
   new_events: any;
 
-
-  public screenWidth: any;  
+  public screenWidth: any;
   toDisplay = true;
 
   ///////////////////// CARD CALLER //////////////////////////
-  private apiUrl = 'https://api.codingninjas.com/api/v3/events';
-  curr_category = 'ALL_EVENTS';
-  curr_subcategory = 'Upcoming';
+
+  apiUrl = this.event.apiUrl;
+  curr_category = this.event.event_detail.category;
+  curr_subcategory = this.event.event_detail.subcategory;
+
   tags: Array<string> = [];
   offset = 0;
   eventsObj = [];
   ta: any;
-  events = [];
+  events: any;
   tag = '';
+
   //////////////////////////////////////////////////////////
 
   // /******************************************************* */
@@ -43,19 +44,28 @@ export class MainComponent {
     var api = event.makeAPI();
   }
 
+  search_data: string[] = [];
+
   callApi() {
     var api = this.event.makeAPI();
     console.log(api);
-    console.log('good');
+    // console.log('good');
     this.http.get(api).subscribe((data: any) => {
       this.eventsObj = data.data.events;
-      this.events = JSON.parse(JSON.stringify(this.eventsObj));
+      this.events = this.eventsObj;
+      // console.log(this.events);  // Here current daata will be fetched
       this.totPages = data.data.page_count;
-      console.log(this.totPages);
+      // console.log(this.totPages);
       this.curPage = this.offset / 20 + 1;
+      for (let i = 0; i < this.events.length; i++)
+        this.search_data.push(this.events[i].name.toLowerCase());
+      console.log(this.search_data);
+      console.log('nkkjjkhjhj ');
     });
+
+    // console.log(this.events); Here old data will be fteched
   }
-  
+
   ngOnInit() {
     this.callApi();
     this.curr_category = this.event.event_detail.category;
@@ -64,10 +74,10 @@ export class MainComponent {
     this.apiurl = this.event.makeAPI();
     this.event.fill();
     // console.log(this.apiurl);
-    this.screenWidth = window.innerWidth;  
-    if(this.screenWidth<=980) this.toDisplay = false;
-    console.log(this.toDisplay);
-    console.log(this.screenWidth);
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth <= 980) this.toDisplay = false;
+    // console.log(this.toDisplay);
+    // console.log(this.screenWidth);
   }
 
   onClickCategory(category: string) {
@@ -100,11 +110,6 @@ export class MainComponent {
     // console.log(this.event.event_detail);
   }
 
-  getImg(curr_url: string): string {
-    if (this.curr_category == '')
-      return '../../../assets/images/allEventsActive.svg';
-    return curr_url;
-  }
 
   changeTag(tag: string) {
     const ind = this.tags.indexOf(tag);
@@ -119,13 +124,13 @@ export class MainComponent {
 
   prevPage() {
     this.offset -= 20;
-    this.event.event_detail.offset-=20;
+    this.event.event_detail.offset -= 20;
     this.callApi();
   }
 
   nextPage() {
     this.offset += 20;
-    this.event.event_detail.offset+=20;
+    this.event.event_detail.offset += 20;
     this.callApi();
     document.documentElement.scrollTop = 0;
   }
@@ -137,13 +142,20 @@ export class MainComponent {
     else {
       this.offset = (a - 1) * 20;
       this.callApi();
-      document.documentElement.scrollTop = 0;
     }
+    document.documentElement.scrollTop = 0;
   }
 
+  ToggleTags() {
+    if (this.toDisplay == true) this.toDisplay = false;
+    else this.toDisplay = true;
+  }
 
-  ToggleTags(){
-      if(this.toDisplay==true) this.toDisplay = false;
-      else this.toDisplay = true 
+  //searching
+  searchText: string = '';
+
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
+    console.log(this.searchText);
   }
 }

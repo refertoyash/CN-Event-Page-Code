@@ -87,6 +87,14 @@ There are two main components
           </div>
         </li>
 
+        <li class="nav-item subcategory">
+          <div>
+            <span>
+             <app-search (searchTextChanged) = "onSearchTextEntered($event)"></app-search>
+            </span>
+          </div>
+        </li>
+
 
       </ul>
     </div>
@@ -100,23 +108,33 @@ There are two main components
   <mat-divider></mat-divider>
 
   <div class="row p-2 pt-4">
-    <div class="col-lg-9 d-flex flex-wrap justify-content-start">
-      <div *ngFor="let event of events" class="d-flex justify-content-center">
-        <app-card class="" eventName="{{ event['name'] }}" imgSrc="{{ event['cover_picture'] }}" value1="Starts On" value2="{{
-            event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'
-          }}" value3="Entry Fee" value4="{{ event['fees'] === 0 ? 'Free' : event['fees'] }}" value5="Venue"
-          value6="{{ event['venue'] }}" eventDescription="{{ event['short_desc'] }}" buttonValue="Register Now"
-          registerLink="{{
-            'https://www.codingninjas.com/events/' + event['slug']
-          }}" regEndTime="{{
-            event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'
-          }}" regStatus="{{event['registration_status']}}" [tagList]="event['card_tags']"
-          [topUsers]="event['registered_users']['top_users']"
-          otherUsers="{{event['registered_users']['other_users_count']}}"
-          showUsers="{{event['registered_users']['show_users_count']}}">
-        </app-card>
+
+    <div *ngIf="totPages!=0" class="col-lg-9 d-flex flex-wrap justify-content-start">
+      <div  *ngFor="let event of events" class="d-flex justify-content-center">
+      
+      <!-- <div *ngFor = "let data of search_data"> -->
+        <!-- <div class="check" *ngIf = "searchText === ''   || '{{event.name}}'.includes(searchText)"}} > -->
+      
+    <app-card class="" [all_data]=event 
+                regStartTime="{{event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'}}"
+                regEndTime="{{event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'}}">
+      </app-card>
+    </div>
+
+    
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+
+    <div *ngIf="totPages==0" class="col-lg-9 d-flex flex-wrap justify-content-start">
+      <div class="d-flex justify-content-center">
+        <app-no-event></app-no-event>
       </div>
     </div>
+    
+  
+
+
 
 <!-- Tag property management  -->
     
@@ -166,4 +184,4 @@ There are two main components
 </div>
 
 
-<!-- <div style="height: 5px;"></div> -->
+<div style="height: 5px;"></div>

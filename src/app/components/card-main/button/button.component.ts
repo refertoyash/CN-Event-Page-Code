@@ -7,9 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() value!:string;
-  @Input() link!:string;
+  // @Input() link!:string;
+
   constructor() { }
 
   ngOnInit(): void {
+    // console.log(this.link);
+    console.log("Mai register link");
   }
 }

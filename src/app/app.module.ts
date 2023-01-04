@@ -16,10 +16,13 @@ import { CardDetailsComponent } from './components/card-main/card-details/card-d
 import { CardDescrComponent } from './components/card-main/card-descr/card-descr.component';
 import { UsersComponent } from './components/card-main/users/users.component';
 import { RegisteredComponent } from './components/card-main/registered/registered.component';
+import { NoEventComponent } from './components/no-event/no-event.component';
+import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, TagsComponent, TagListComponent, CardComponent, ButtonComponent, CardBannerComponent, CardDetailsComponent, CardDescrComponent, UsersComponent, RegisteredComponent],
-  imports: [BrowserModule, AppRoutingModule, MatDividerModule, BrowserAnimationsModule, FontAwesomeModule,  HttpClientModule,],
+  declarations: [AppComponent, MainComponent, TagsComponent, TagListComponent, CardComponent, ButtonComponent, CardBannerComponent, CardDetailsComponent, CardDescrComponent, UsersComponent, RegisteredComponent, NoEventComponent, SearchComponent],
+  imports: [BrowserModule, AppRoutingModule, MatDividerModule, BrowserAnimationsModule, FontAwesomeModule,  HttpClientModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
