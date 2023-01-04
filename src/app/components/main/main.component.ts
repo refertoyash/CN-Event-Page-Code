@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { text } from '@fortawesome/fontawesome-svg-core';
 import { FilterDetailsService } from 'src/app/services/filter-details.service';
 
 @Component({
@@ -7,17 +8,20 @@ import { FilterDetailsService } from 'src/app/services/filter-details.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
+
+
+
 export class MainComponent {
   // Changing fetching details on clicking any category
+  searchText:any;
   apiurl: string = '';
   temp: any;
   temp1: any;
   new_events: any;
-
+  alleventsname!: string[];
   public screenWidth: any;
   toDisplay = true;
 
-  ///////////////////// CARD CALLER //////////////////////////
 
   apiUrl = this.event.apiUrl;
   curr_category = this.event.event_detail.category;
@@ -30,37 +34,30 @@ export class MainComponent {
   events: any;
   tag = '';
 
-  //////////////////////////////////////////////////////////
-
-  // /******************************************************* */
   btn1 = 'disabled';
   btn2 = 'enabled';
   totPages = 1;
   curPage = 1;
-  //pageVal = "";
-  // /******************************************************* */
+
 
   constructor(private event: FilterDetailsService, private http: HttpClient) {
     var api = event.makeAPI();
   }
 
-  search_data: string[] = [];
 
   callApi() {
     var api = this.event.makeAPI();
     console.log(api);
-    // console.log('good');
     this.http.get(api).subscribe((data: any) => {
       this.eventsObj = data.data.events;
       this.events = this.eventsObj;
-      // console.log(this.events);  // Here current daata will be fetched
+      console.log(this.events); // Here current daata will be fetched
+      this.alleventsname = this.events.name;
+      // console.log(this.alleventsname);  // Here current daata will be fetched
+      // console.log("fdhdjfhdjf dfgkd gd ");  // Here current daata will be fetched
       this.totPages = data.data.page_count;
       // console.log(this.totPages);
       this.curPage = this.offset / 20 + 1;
-      for (let i = 0; i < this.events.length; i++)
-        this.search_data.push(this.events[i].name.toLowerCase());
-      console.log(this.search_data);
-      console.log('nkkjjkhjhj ');
     });
 
     // console.log(this.events); Here old data will be fteched
@@ -110,7 +107,6 @@ export class MainComponent {
     // console.log(this.event.event_detail);
   }
 
-
   changeTag(tag: string) {
     const ind = this.tags.indexOf(tag);
     if (ind > -1) {
@@ -125,14 +121,18 @@ export class MainComponent {
   prevPage() {
     this.offset -= 20;
     this.event.event_detail.offset -= 20;
+    // document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0)
     this.callApi();
   }
 
   nextPage() {
     this.offset += 20;
     this.event.event_detail.offset += 20;
+    // document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0)
+    console.log("I'm Clicked for next")
     this.callApi();
-    document.documentElement.scrollTop = 0;
   }
 
   functionPage() {
@@ -150,12 +150,5 @@ export class MainComponent {
     if (this.toDisplay == true) this.toDisplay = false;
     else this.toDisplay = true;
   }
-
-  //searching
-  searchText: string = '';
-
-  onSearchTextEntered(searchValue: string) {
-    this.searchText = searchValue;
-    console.log(this.searchText);
-  }
+  
 }

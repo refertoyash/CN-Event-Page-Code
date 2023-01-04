@@ -111,6 +111,22 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
+
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.form-control{
+   /* background-color: red; */
+  width: 200px;
+  border-color:  #fa7328;
+}
+
+.second{
+  display: flex;
+  justify-content: flex-start;
+}
+.li-fix{
+  position: relative;
+  top: 10px;
 }

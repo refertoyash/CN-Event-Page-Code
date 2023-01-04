@@ -9,6 +9,7 @@ export class CardBannerComponent {
   @Input() imgSrc!:string;
   @Input() regEndTime!:string;
   @Input() regStatus!: string;
+  @Input() name!: string;
   constructor() { }
 
   ngOnInit(): void {

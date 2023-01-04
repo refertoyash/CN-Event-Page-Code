@@ -19,10 +19,34 @@ import { RegisteredComponent } from './components/card-main/registered/registere
 import { NoEventComponent } from './components/no-event/no-event.component';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, TagsComponent, TagListComponent, CardComponent, ButtonComponent, CardBannerComponent, CardDetailsComponent, CardDescrComponent, UsersComponent, RegisteredComponent, NoEventComponent, SearchComponent],
-  imports: [BrowserModule, AppRoutingModule, MatDividerModule, BrowserAnimationsModule, FontAwesomeModule,  HttpClientModule,FormsModule],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    TagsComponent,
+    TagListComponent,
+    CardComponent,
+    ButtonComponent,
+    CardBannerComponent,
+    CardDetailsComponent,
+    CardDescrComponent,
+    UsersComponent,
+    RegisteredComponent,
+    NoEventComponent,
+    SearchComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatDividerModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    FormsModule,
+    Ng2SearchPipeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

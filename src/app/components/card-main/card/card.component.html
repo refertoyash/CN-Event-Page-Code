@@ -2,7 +2,7 @@
 
   <div>
 
-    <app-card-banner imgSrc={{all_data.cover_picture}} regEndTime={{regEndTime}}
+    <app-card-banner imgSrc={{all_data.cover_picture}} regEndTime={{regEndTime} name = {{all_data.name}}
       regStatus={{all_data.registration_status}}></app-card-banner>
 
     <div class="d-flex flex-column justify-content-between  p-2 h6  ">
@@ -49,14 +49,14 @@
     </div>
 
     <div *ngIf="all_data.event_sub_category=== 'Upcoming'; ">
-      <app-button value="Register Now"></app-button>
+      <app-button value="Register Now" link={{all_data.slug}}></app-button>
     </div>
 
   </div>
 
   <ng-template #elseBlock>
     <div *ngIf="all_data.event_sub_category=== 'Upcoming' " class=" p-1 border-top">
-      <app-button value="Register Now"></app-button>
+      <app-button value="Register Now" link={{all_data.slug}}></app-button>
     </div>
   </ng-template>
 

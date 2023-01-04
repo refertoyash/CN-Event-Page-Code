@@ -11,38 +11,52 @@ There are two main components
 
       <ul class="pe-2 pt-3 ps-3 d-flex justify-content-between col-lg-10">
         <li class="d-flex me-4" (click)="onClickCategory('ALL_EVENTS')">
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='ALL_EVENTS')?'':'none'}" src="../../../assets/images/allEventsInactive.svg" alt="all-events-logo" />
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='ALL_EVENTS')?'':'none'}" src="../../../assets/images/allEventsActive.svg" alt="all-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='ALL_EVENTS')?'':'none'}"
+            src="../../../assets/images/allEventsInactive.svg" alt="all-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='ALL_EVENTS')?'':'none'}"
+            src="../../../assets/images/allEventsActive.svg" alt="all-events-logo" />
           <span [ngClass]="(curr_category=='ALL_EVENTS')?'active':'inactive'">All Events</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('WEBINAR')">
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='WEBINAR')?'':'none'}"  src="../../../assets/images/webinarInactive.svg" alt="webinar-logo" />
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='WEBINAR')?'':'none'}"  src="../../../assets/images/webinarsActive.svg" alt="webinar-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='WEBINAR')?'':'none'}"
+            src="../../../assets/images/webinarInactive.svg" alt="webinar-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='WEBINAR')?'':'none'}"
+            src="../../../assets/images/webinarsActive.svg" alt="webinar-logo" />
           <span [ngClass]="(curr_category=='WEBINAR')?'active':'inactive'">Webinars</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('CODING_EVENT')">
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='CODING_EVENT')?'':'none'}" src="../../../assets/images/codingEventsInactive.svg" alt="coding-events-logo" />
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='CODING_EVENT')?'':'none'}" src="../../../assets/images/codingEventsActive.svg" alt="coding-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='CODING_EVENT')?'':'none'}"
+            src="../../../assets/images/codingEventsInactive.svg" alt="coding-events-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='CODING_EVENT')?'':'none'}"
+            src="../../../assets/images/codingEventsActive.svg" alt="coding-events-logo" />
           <span [ngClass]="(curr_category=='CODING_EVENT')?'active':'inactive'">Coding Events</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('BOOTCAMP_EVENT')">
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='BOOTCAMP_EVENT')?'':'none'}"  src="../../../assets/images/bootcampEventsInactive.png" alt="bootcamp-logo" />
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='BOOTCAMP_EVENT')?'':'none'}"  src="../../../assets/images/BootcampEventsActive.png" alt="bootcamp-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='BOOTCAMP_EVENT')?'':'none'}"
+            src="../../../assets/images/bootcampEventsInactive.png" alt="bootcamp-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='BOOTCAMP_EVENT')?'':'none'}"
+            src="../../../assets/images/BootcampEventsActive.png" alt="bootcamp-logo" />
           <span [ngClass]="(curr_category=='BOOTCAMP_EVENT')?'active':'inactive'">Bootcamp Events</span>
         </li>
 
 
         <li class="d-flex me-4" (click)="onClickCategory('WORKSHOP')">
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='WORKSHOP')?'':'none'}" src="../../../assets/images/workshopInactive.png" alt="workshop-logo" />
-          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='WORKSHOP')?'':'none'}" src="../../../assets/images/workshopActive.png" alt="workshop-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category!='WORKSHOP')?'':'none'}"
+            src="../../../assets/images/workshopInactive.png" alt="workshop-logo" />
+          <img class="imgSrc" [ngStyle]="{'display': (curr_category=='WORKSHOP')?'':'none'}"
+            src="../../../assets/images/workshopActive.png" alt="workshop-logo" />
           <span [ngClass]="(curr_category=='WORKSHOP')?'active':'inactive'">Workshops</span>
         </li>
+
+       
+
+
       </ul>
 
 
@@ -56,17 +70,17 @@ There are two main components
 
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="cont container">
-      <ul class="pe-2 pt-1 ps-3 pb-0 d-flex">
+    <div class="cont container second">
+      <ul class="pe-2 pt-1 ps-3 pb-0 d-flex ">
 
 
-        <li class="nav-item subcategory">
+        <li class="nav-item subcategory li-fix">
           <span (click)="onClickSubCategory('Upcoming')"
             [ngClass]="(curr_subcategory=='Upcoming')?'active':'inactive'">Upcoming</span>
         </li>
 
 
-        <li class="nav-item subcategory">
+        <li class="nav-item subcategory li-fix">
           <div *ngIf="curr_category=='WEBINAR'; else elseBlock">
             <span (click)="onClickSubCategory('Archived')"
               [ngClass]="(curr_subcategory=='Archived')?'active':'inactive'">Recorded</span>
@@ -78,7 +92,7 @@ There are two main components
         </li>
 
 
-        <li class="nav-item subcategory">
+        <li class="nav-item subcategory li-fix">
           <div>
             <span [ngStyle]="{ 'display': (curr_category=='CODING_EVENT')?'none':'block' }"
               (click)="onClickSubCategory('All Time Favorites')"
@@ -89,13 +103,13 @@ There are two main components
 
         <li class="nav-item subcategory">
           <div>
-            <span>
-             <app-search (searchTextChanged) = "onSearchTextEntered($event)"></app-search>
-            </span>
+            <!-- <app-search (text_to_search) = "getsearchtext($event)"></app-search> -->
+              <input class="form-control search-hero" type="text" name="search" [(ngModel)] = "searchText" autocomplete="off" placeholder="Search an Event">
           </div>
         </li>
+          
 
-
+        
       </ul>
     </div>
   </nav>
@@ -110,20 +124,16 @@ There are two main components
   <div class="row p-2 pt-4">
 
     <div *ngIf="totPages!=0" class="col-lg-9 d-flex flex-wrap justify-content-start">
-      <div  *ngFor="let event of events" class="d-flex justify-content-center">
-      
-      <!-- <div *ngFor = "let data of search_data"> -->
-        <!-- <div class="check" *ngIf = "searchText === ''   || '{{event.name}}'.includes(searchText)"}} > -->
-      
-    <app-card class="" [all_data]=event 
-                regStartTime="{{event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'}}"
-                regEndTime="{{event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'}}">
-      </app-card>
-    </div>
+      <div *ngFor= "let event of events | filter: searchText" class="d-flex justify-content-center">
 
-    
-        <!-- </div> -->
-      <!-- </div> -->
+            <app-card class="" 
+              [all_data]=event
+              regStartTime="{{event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'}}"
+              regEndTime="{{event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'}}">
+            </app-card>
+
+      </div>
+
     </div>
 
     <div *ngIf="totPages==0" class="col-lg-9 d-flex flex-wrap justify-content-start">
@@ -131,50 +141,52 @@ There are two main components
         <app-no-event></app-no-event>
       </div>
     </div>
-    
-  
 
 
+    <!-- Tag property management  -->
 
-<!-- Tag property management  -->
-    
-    
-  <div class="col-lg-3 d-flex justify-content-start ">
+
+    <div class="col-lg-3 d-flex justify-content-start ">
       <app-tags *ngIf="toDisplay" class="tags" (tagChange)="changeTag($event)"></app-tags>
     </div>
+
   </div>
-  
-<!-- Paging Management  -->
-  
+
+  <!-- Paging Management  -->
+
 
   <div class="row box">
 
     <div class="col-lg-9 d-flex flex-row-reverse align-items-center justify-content-center ">
-    
+
       <div *ngIf="curPage != totPages">
-        <button class="btn btn-md ms-1 text-light" style="background-color: '#fa7328' " (click)="nextPage()">&gt;</button>
+        <button class="btn btn-md ms-1 text-light" style="background-color: '#fa7328' "
+          (click)="nextPage()">&gt;</button>
       </div>
-      
+
       <div *ngIf="curPage == totPages">
-        <button disabled="true" class="btn btn-md ms-1 text-light" style="background-color:'#fa7328' "(click)="nextPage()">&gt;</button>
+        <button disabled="true" class="btn btn-md ms-1 text-light" style="background-color:'#fa7328' "
+          (click)="nextPage()">&gt;</button>
       </div>
-      
-      <span> Page <input class="text-center" value="" style="width: 40px;" type="number" min="1" max="{{totPages}}" id="pageVal" name="pageVal" placeholder="{{ curPage }}" (change)="functionPage()">
+
+      <span> Page <input class="text-center" value="" style="width: 40px;" type="number" min="1" max="{{totPages}}"
+          id="pageVal" name="pageVal" placeholder="{{ curPage }}" (change)="functionPage()">
         of {{ totPages }}
       </span>
-      
+
       <div *ngIf="curPage != 1">
         <button class="btn btn-md me-1 text-light" style="background-color: '#fa7328' " (click)="prevPage()">
           &lt;
         </button>
       </div>
-      
+
       <div *ngIf="curPage == 1">
-        <button disabled="true" class="btn btn-md me-1 text-light" style="background-color: '#fa7328' "(click)="prevPage()">&lt;</button>
+        <button disabled="true" class="btn btn-md me-1 text-light" style="background-color: '#fa7328' "
+          (click)="prevPage()">&lt;</button>
       </div>
-      
+
     </div>
-    
+
   </div>
 </div>
 
