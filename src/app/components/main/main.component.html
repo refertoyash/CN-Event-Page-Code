@@ -1,6 +1,6 @@
 <!-- Main component is the main component where we are linking all basic components of this project  -->
 <!-- 
-There are two main components 
+There are two most important components 
 1. Card component
 2. Tag component -->
 
@@ -115,11 +115,11 @@ There are two main components
   </nav>
 
   <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 
 
   <!-- Showing Event Data fetched by event API  -->
 
-  <mat-divider></mat-divider>
 
   <div class="row p-2 pt-4">
 
@@ -133,13 +133,12 @@ There are two main components
             </app-card>
 
       </div>
-
     </div>
 
-    <div *ngIf="totPages==0" class="col-lg-9 d-flex flex-wrap justify-content-start">
-      <div class="d-flex justify-content-center fixing">
-        <app-no-event></app-no-event>
-      </div>
+     <div *ngIf="totPages==0" class="col-lg-9 d-flex flex-wrap justify-content-start">
+        <div class="d-flex justify-content-center fixing">
+          <app-no-event></app-no-event>
+        </div>
     </div>
 
 
@@ -159,30 +158,26 @@ There are two main components
 
     <div class="col-lg-9 d-flex flex-row-reverse align-items-center justify-content-center ">
 
-      <div *ngIf="curPage != totPages">
+      <div *ngIf="curPage < totPages">
         <button class="btn btn-md ms-1 text-light" style="background-color: '#fa7328' "
           (click)="nextPage()">&gt;</button>
       </div>
 
       <div *ngIf="curPage == totPages">
-        <button disabled="true" class="btn btn-md ms-1 text-light" style="background-color:'#fa7328' "
-          (click)="nextPage()">&gt;</button>
+        <button disabled="true" class="btn btn-md ms-1 text-light" style="background-color:'#fa7328' " (click)="nextPage()">&gt;</button>
       </div>
 
-      <span> Page <input class="text-center" value="" style="width: 40px;" type="number" min="1" max="{{totPages}}"
-          id="pageVal" name="pageVal" placeholder="{{ curPage }}" (change)="functionPage()">
+      <span> Page 
+        <input class="text-center" value="" style="width: 40px;" type="number" min="1" max="{{totPages}}"  id="pageVal" name="pageVal" placeholder="{{ curPage }}">
         of {{ totPages }}
       </span>
 
       <div *ngIf="curPage != 1">
-        <button class="btn btn-md me-1 text-light" style="background-color: '#fa7328' " (click)="prevPage()">
-          &lt;
-        </button>
+        <button class="btn btn-md me-1 text-light" style="background-color: '#fa7328' " (click)="prevPage()"> &lt; </button>
       </div>
 
       <div *ngIf="curPage == 1">
-        <button disabled="true" class="btn btn-md me-1 text-light" style="background-color: '#fa7328' "
-          (click)="prevPage()">&lt;</button>
+        <button disabled="true" class="btn btn-md me-1 text-light" style="background-color: '#fa7328' " (click)="prevPage()">&lt;</button>
       </div>
 
     </div>

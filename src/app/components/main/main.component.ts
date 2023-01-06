@@ -10,88 +10,70 @@ import { FilterDetailsService } from 'src/app/services/filter-details.service';
 })
 
 
-
 export class MainComponent {
-  // Changing fetching details on clicking any category
-  searchText:any;
-  apiurl: string = '';
-  temp: any;
-  temp1: any;
-  new_events: any;
-  alleventsname!: string[];
-  public screenWidth: any;
+
+  // Some important variable to store data 
+
+  searchText: any;
+  screenWidth: any;
   toDisplay = true;
+  events: any;
+  totPages = 1;
+  curPage:any;
+  
+  tags: Array<string> = [];
+  tag = '';
+ 
 
 
-  apiUrl = this.event.apiUrl;
+  constructor(private event: FilterDetailsService, private http: HttpClient) {}
+  
+  //Updating current status in these variables 
   curr_category = this.event.event_detail.category;
   curr_subcategory = this.event.event_detail.subcategory;
-
-  tags: Array<string> = [];
-  offset = 0;
-  eventsObj = [];
-  ta: any;
-  events: any;
-  tag = '';
-
-  btn1 = 'disabled';
-  btn2 = 'enabled';
-  totPages = 1;
-  curPage = 1;
+  offset = this.event.event_detail.offset;
 
 
-  constructor(private event: FilterDetailsService, private http: HttpClient) {
-    var api = event.makeAPI();
-  }
-
+  
+  //Calling API whenever any event happens
 
   callApi() {
     var api = this.event.makeAPI();
-    console.log(api);
+    // console.log(api); getting data from this generated api
     this.http.get(api).subscribe((data: any) => {
-      this.eventsObj = data.data.events;
-      this.events = this.eventsObj;
-      console.log(this.events); // Here current daata will be fetched
-      this.alleventsname = this.events.name;
-      // console.log(this.alleventsname);  // Here current daata will be fetched
-      // console.log("fdhdjfhdjf dfgkd gd ");  // Here current daata will be fetched
-      this.totPages = data.data.page_count;
-      // console.log(this.totPages);
-      this.curPage = this.offset / 20 + 1;
-    });
-
-    // console.log(this.events); Here old data will be fteched
+        // console.log(data);
+        // console.log(data.data.events);
+        this.events = data.data.events;
+        // console.log(this.events); // Here current daata will be fetched
+        this.totPages = data.data.page_count;
+      });
   }
 
   ngOnInit() {
     this.callApi();
+    this.curPage = 1;
     this.curr_category = this.event.event_detail.category;
     this.curr_subcategory = this.event.event_detail.subcategory;
-    // this.event.getData();
-    this.apiurl = this.event.makeAPI();
-    this.event.fill();
-    // console.log(this.apiurl);
     this.screenWidth = window.innerWidth;
     if (this.screenWidth <= 980) this.toDisplay = false;
     // console.log(this.toDisplay);
     // console.log(this.screenWidth);
   }
 
+
+  ///////////////////////////////////////////////////////////////////////////////
+
+  // Changing fetching details on clicking any category
+
   onClickCategory(category: string) {
     this.event.event_detail.category = category;
     this.event.event_detail.subcategory = 'Upcoming';
     this.curr_category = this.event.event_detail.category;
     this.curr_subcategory = this.event.event_detail.subcategory;
-    this.apiurl = this.event.makeAPI();
     this.callApi();
-    // this.event.fill();
-
-    // console.log('api ye hun');
     // console.log(this.apiurl);
     // this.new_events = this.event.events;
-    // console.log('Ye curr data');
-    // console.log(this.new_events);
-    // console.log('Ye curr data');
+    // console.log(this.new_events)
   }
 
   // Changing fetching details on clicking any subcategory
@@ -99,10 +81,7 @@ export class MainComponent {
   onClickSubCategory(subcategory: string) {
     this.event.event_detail.subcategory = subcategory;
     this.curr_subcategory = this.event.event_detail.subcategory;
-    this.apiurl = this.event.makeAPI();
     this.callApi();
-    // this.event.fill();
-
     // console.log(this.apiurl);
     // console.log(this.event.event_detail);
   }
@@ -119,36 +98,22 @@ export class MainComponent {
   }
 
   prevPage() {
-    this.offset -= 20;
     this.event.event_detail.offset -= 20;
-    // document.documentElement.scrollTop = 0;
-    window.scrollTo(0, 0)
+    this.curPage = this.curPage-1;
+    window.scrollTo(0, 0);
     this.callApi();
   }
 
   nextPage() {
-    this.offset += 20;
     this.event.event_detail.offset += 20;
-    document.documentElement.scrollTop = 0;
-    // window.scrollTo(0, 0)
-    console.log("I'm Clicked for next")
+    this.curPage = this.curPage+1;
+    window.scrollTo(0, 0);
     this.callApi();
-  }
-
-  functionPage() {
-    var aa = (document.getElementById('pageVal') as HTMLInputElement).value;
-    var a = parseInt(aa);
-    if (a > this.totPages) return;
-    else {
-      this.offset = (a - 1) * 20;
-      this.callApi();
-    }
-    document.documentElement.scrollTop = 0;
   }
 
   ToggleTags() {
     if (this.toDisplay == true) this.toDisplay = false;
     else this.toDisplay = true;
   }
-  
+
 }

@@ -5,6 +5,7 @@ import { apiformat } from '../details-format-intreface';
 @Injectable({
   providedIn: 'root',
 })
+
 export class FilterDetailsService {
   constructor(private http: HttpClient) {}
 
