@@ -17,29 +17,23 @@ export class CardComponent {
   cost!: any;
   tagList!: Array<string>;
 
-  tags: Array<string> = [];
+  tags: Array<string> = []; //To have only important tags to show 
   otherTag = 0;
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void{
 
     console.log(this.all_data);
     console.log(this.regEndTime);
-    
     this.cost = this.all_data.fees;
-    if (this.cost == 0) {
-      this.cost = 'Free';
-    } else {
-      this.cost = this.all_data.fees;
-    }
-
+    if (this.cost == 0)   this.cost = 'Free';
+    else this.cost = this.all_data.fees; // | currency:"₹":0
+    
     this.tagList = this.all_data.card_tags;
+
     for (let i = 0; i < this.tagList.length; i++) {
-      if (i < 3) {
-        this.tags.push(this.tagList[i]);
-      } else {
-        this.otherTag++;
-      }
+      if (i < 3) this.tags.push(this.tagList[i]);
+       else  this.otherTag++;
     }
   }
 }

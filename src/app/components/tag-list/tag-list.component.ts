@@ -22,25 +22,21 @@ export class TagListComponent {
   apiurl: string = '';
   
   ItemClicked(index: number) {
+    //Updating current status of tags 
+  
     this.temp_status = this.tag_status[index];
     if (this.temp_status == true) this.tag_status[index] = false;
     else this.tag_status[index] = true;
 
-    this.event.event_detail.taglist = '';
+    //Updating event_detail of service
+    this.event.event_detail.taglist = ''; 
 
     for (let i = 0; i < this.tag_status.length; i++) {
       if (this.tag_status[i] == true)
-        this.event.event_detail.taglist =
-          this.event.event_detail.taglist + this.alltags[i] + ',';
+        this.event.event_detail.taglist = this.event.event_detail.taglist + this.alltags[i] + ',';
     }
 
-    this.event.event_detail.taglist = this.event.event_detail.taglist.substring(
-      0,
-      this.event.event_detail.taglist.length - 1
-    );
-    this.apiurl = this.event.makeAPI();
-    console.log(this.apiurl);
-    // console.log(this.event.event_detail);
+    this.event.event_detail.taglist = this.event.event_detail.taglist.substring(0,this.event.event_detail.taglist.length - 1);
   }
 
   ngOnInit() {}

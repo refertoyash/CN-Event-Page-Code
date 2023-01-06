@@ -34,7 +34,7 @@ export class MainComponent {
   offset = this.event.event_detail.offset;
 
 
-  
+
   //Calling API whenever any event happens
 
   callApi() {
@@ -87,12 +87,7 @@ export class MainComponent {
   }
 
   changeTag(tag: string) {
-    const ind = this.tags.indexOf(tag);
-    if (ind > -1) {
-      this.tags.splice(ind, 1);
-    } else {
-      this.tags.push(tag);
-    }
+    this.tags.push(tag);
     this.offset = 0;
     this.callApi();
   }

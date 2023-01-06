@@ -18,12 +18,11 @@
       </div>
 
       <div class="d-flex justify-content-start">
-        <span class="p-1 mx-1" style="background-color: #eee; font-size: 0.8rem;"
-          *ngFor="let tag of tags;let i =index;">
+        <span class="p-1 mx-1" style="background-color: #eee; font-size: 0.8rem;" *ngFor="let tag of tags;">
           <span class="extra-tags">{{tag}}</span>
         </span>
 
-        <span *ngIf="otherTag!=0" style="color: #FA7328;">+{{otherTag}} more</span>
+        <span *ngIf="otherTag!=0" style="color: #FA7328;"> +{{otherTag}} more</span>
       </div>
 
     </div>
@@ -34,6 +33,7 @@
     class="d-flex justify-content-between align-items-center p-1 border-top">
 
     <div>
+
       <app-registered *ngFor="let user of all_data.registered_users.top_users" imgSrc="{{user['image_url']}}"
         name="{{user['name']}}" otherUsers={{all_data.registered_users.other_users_count}}
         regStatus={{all_data.registration_status}}>
@@ -41,17 +41,16 @@
 
       <div class="d-flex">
         <p class="registered-para">and <strong>{{all_data.registered_users.other_users_count}}</strong> others
-          <span *ngIf="all_data.registration_status=='PAST'"> participated.</span>
-          <span *ngIf="all_data.registration_status!='PAST'">are participating.</span>
+          <span *ngIf="all_data.registration_status!='REGISTRATIONS_OPEN'"> participated.</span>
+          <span *ngIf="all_data.registration_status=='REGISTRATIONS_OPEN'">are participating.</span>
         </p>
       </div>
-
     </div>
 
     <div *ngIf="all_data.event_sub_category=== 'Upcoming'; ">
       <app-button value="Register Now" link={{all_data.slug}}></app-button>
     </div>
-
+    
   </div>
 
   <ng-template #elseBlock>

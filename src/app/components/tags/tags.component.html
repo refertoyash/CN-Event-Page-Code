@@ -3,9 +3,12 @@
   <div class="flex flex-col justify-content-around">
 
     <div class="cursor tagName" *ngFor="let tag of curr_tags; let indexOfelement=index;">
-      <app-tag-list [tag]="tag" [index]="indexOfelement" [tag_status]="tag_status" [alltags]="alltags"
-        (click)="tagClicked(tag)"></app-tag-list>
+
       <!-- Passing necessary data from parent to child by binding method -->
+
+      <app-tag-list [tag]="tag" [index]="indexOfelement" [tag_status]="tag_status" [alltags]="alltags" (click)="tagClicked(tag)">
+      </app-tag-list>
+
     </div>
 
   </div>
